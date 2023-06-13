@@ -119,6 +119,7 @@ function AdminPanel() {
         <div style={styles.modal}> 
           {<form>
             <div style={styles.formGroup}>
+            <input name="no" onChange={handleInputChange} placeholder="No Bus" />
           <input name="asal" onChange={handleInputChange} placeholder="Asal Bus" />
           <input name="tujuan" onChange={handleInputChange} placeholder="Tujuan Bus" />
           <input name="jamberangkat" onChange={handleInputChange} placeholder="Jam Berangkat" />
@@ -127,6 +128,8 @@ function AdminPanel() {
           <input name="tipebus" onChange={handleInputChange} placeholder="Tipe Bus" />
           <input name="kodeasal" onChange={handleInputChange} placeholder="Kode Asal" />
           <input name="kodetujuan" onChange={handleInputChange} placeholder="Kode Tujuan" />
+          <input name="durasi" onChange={handleInputChange}  placeholder="Durasi" />
+          <input name="harga" onChange={handleInputChange}  placeholder="harga" />
           <button type="button" onClick={handleAddBus}>Tambah Bus</button>
           <button type="button" onClick={() => setIsAdding(false)}>Batal</button>
           </div>
@@ -139,6 +142,7 @@ function AdminPanel() {
         <div style={styles.modal}>
           {<form>
             <div style={styles.formGroup}>
+          <input name="no" onChange={handleInputChange} value={form.no || ''} placeholder="No Bus" />
           <input name="asal" onChange={handleInputChange} value={form.asal || ''} placeholder="Asal Bus" />
           <input name="tujuan" onChange={handleInputChange} value={form.tujuan || ''} placeholder="Tujuan Bus" />
           <input name="jamberangkat" onChange={handleInputChange} value={form.jamberangkat || ''} placeholder="Jam Berangkat" />
@@ -147,6 +151,8 @@ function AdminPanel() {
           <input name="tipebus" onChange={handleInputChange} value={form.tipebus || ''} placeholder="Tipe Bus" />
           <input name="kodeasal" onChange={handleInputChange} value={form.kodeasal || ''} placeholder="Kode Asal" />
           <input name="kodetujuan" onChange={handleInputChange} value={form.kodetujuan || ''} placeholder="Kode Tujuan" />
+          <input name="durasi" onChange={handleInputChange} value={form.durasi || ''} placeholder="Durasi" />
+          <input name="harga" onChange={handleInputChange} value={form.harga || ''} placeholder="harga" />
           <button type="button" onClick={handleEditBus}>Edit Bus</button>
           <button type="button" onClick={() => setIsEditing(false)}>Batal</button>
           </div>
@@ -157,6 +163,7 @@ function AdminPanel() {
       <table style={styles.table}>
         <thead style={styles.tableHeader}>
           <tr>
+            <th>No</th>
             <th>Asal Bus</th>
             <th>Tujuan Bus</th>
             <th>Jam Berangkat</th>
@@ -165,12 +172,15 @@ function AdminPanel() {
             <th>Tipe Bus</th>
             <th>Kode Asal</th>
             <th>Kode Tujuan</th>
+            <th>Durasi</th>
+            <th>Harga</th>
             <th>Aksi</th>
           </tr>
         </thead>
         <tbody>
           {busList.map((bus) => (
             <tr key={bus.id}>
+              <td>{bus.no}</td>
               <td>{bus.asal}</td>
               <td>{bus.tujuan}</td>
               <td>{bus.jamberangkat}</td>
@@ -179,6 +189,8 @@ function AdminPanel() {
               <td>{bus.tipebus}</td>
               <td>{bus.kodeasal}</td>
               <td>{bus.kodetujuan}</td>
+              <td>{bus.durasi}</td>
+              <td>{bus.harga}</td>
               <td>
                 <button style={{ ...styles.button, backgroundColor: '#ffc107' }} onClick={() => {
                   setIsEditing(true);
